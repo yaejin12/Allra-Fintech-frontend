@@ -3,6 +3,7 @@
 import { ProductDetail, productDetailSchema } from '@/schemas/product'
 import { ActionResult } from '@/actions/action-result'
 
+// productDetail 상세정보 받기
 export const getProduct = async (
   id: string
 ): Promise<ActionResult<ProductDetail>> => {
