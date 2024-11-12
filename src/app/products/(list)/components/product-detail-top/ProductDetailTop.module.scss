@@ -60,7 +60,7 @@
 
         // title
         .productName {
-          font-size: 24px;
+          font-size: var(--font-size-title);
           font-weight: 600;
           margin-bottom: 24px;
         }
@@ -73,12 +73,12 @@
           font-weight: 700;
 
           .price {
-            font-size: 24px;
+            font-size: var(--font-size-title);
             margin-right: 10px;
           }
 
           .sale {
-            font-size: 20px;
+            font-size: var(--font-size-sub-title);
             color: var(--color-red);
           }
         }
