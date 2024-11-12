@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* 루트 */
+:root {
+  --color-border: #59a66f;
+  --color-point: #4cbd6c;
+  --color-point-sub: #bee8c9;
+  --color-red: #953232;
+  --color-gray: #6b7280;
+}
+
+:root {
+  --font-size-icon: 15px;
+  --font-size-base: 16px;
+  /* 표 작은 */
+  --font-size-sm: 16px;
+  /*  */
+  --font-size-project-base: 25px;
+  --font-size-project-base-sub: 22px;
+  /*  */
+  --font-size-title: 65px;
+  --font-size-main-base: 45px;
+  --font-size-main-base-point: 49px;
+  --font-size-main-sub: 17px;
+  --font-size-main-skill: 35px;
+}
