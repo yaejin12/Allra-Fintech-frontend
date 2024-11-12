@@ -27,7 +27,7 @@ export const getProducts = async ({
     if (q) {
       params.append('q', q)
     }
-
+    // 검색어가 있으면 검색 API로, 없으면 일반 상품 목록 API로 요청 URL 설정
     const baseUrl = q
       ? 'https://dummyjson.com/products/search'
       : 'https://dummyjson.com/products'
@@ -48,9 +48,17 @@ export const getProducts = async ({
     const { success, data } = getProductsResponseSchema.safeParse(result)
 
     if (success) {
+      // 타이틀 기준으로 검색 필터링
+      let newData = data
+      if (q && data?.products) {
+        const filterData = data?.products.filter((product) => {
+          return product.title.toLowerCase().includes(q.toLowerCase())
+        })
+        newData = { ...newData, products: filterData }
+      }
       return {
         status: 'success',
-        data: data,
+        data: newData,
       }
     } else {
       return {
