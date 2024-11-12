@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from '@/app/products/(list)/components/product-detail-top/ProductDetailTop.module.scss'
 import { Badge } from '@/components/ui/badge'
 import { RatingStars } from '@/components/rating-stars'
@@ -27,6 +27,11 @@ function ProductDetailTop({ data }: ProductDetailTopProps) {
     availabilityStatus,
   } = data
 
+  // 제품의 재고 버그 수정
+  const calculateAvailability = () => {
+    return minimumOrderQuantity <= stock ? 'primary' : 'disabled'
+  }
+
   return (
     <section className={styles.productDetailTopSection}>
       <div className={styles.productDetailTopWrapper}>
@@ -50,7 +55,8 @@ function ProductDetailTop({ data }: ProductDetailTopProps) {
             </div>
             {/* brand & category */}
             <div className={styles.brandAndCategory}>
-              <p>{brand}</p>
+              {/* brand 없는 제품도 있어서 && 연산자로 작업함 */}
+              {brand && <p>{brand}</p>}
               <p>{category}</p>
             </div>
             {/* title */}
@@ -102,9 +108,7 @@ function ProductDetailTop({ data }: ProductDetailTopProps) {
               </select>
               <DetailButton
                 text={'Add to Cart'}
-                cssType={
-                  availabilityStatus === 'Low Stock' ? 'disabled' : 'primary'
-                }
+                cssType={calculateAvailability()}
               />
             </div>
           </div>

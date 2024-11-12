@@ -4,9 +4,15 @@
   background-color: var(--color-point);
   font-weight: 600;
   color: #fff;
-  // font-size: 20px;
+  font-size: var(--font-size-base);
 
   &.disabled {
     background-color: var(--color-gray);
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .button {
+    height: 50px;
   }
 }

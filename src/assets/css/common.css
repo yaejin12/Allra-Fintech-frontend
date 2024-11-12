@@ -9,17 +9,26 @@
 }
 
 :root {
-  --font-size-icon: 15px;
+  --font-size-title: 24px;
+  --font-size-sub-title: 20px;
   --font-size-base: 16px;
-  /* 표 작은 */
-  --font-size-sm: 16px;
-  /*  */
-  --font-size-project-base: 25px;
-  --font-size-project-base-sub: 22px;
-  /*  */
-  --font-size-title: 65px;
-  --font-size-main-base: 45px;
-  --font-size-main-base-point: 49px;
-  --font-size-main-sub: 17px;
-  --font-size-main-skill: 35px;
+  --font-size-sm: 14px;
+}
+
+@media screen and (max-width: 1280px) {
+  :root {
+    --font-size-title: 22px;
+    --font-size-sub-title: 18px;
+    --font-size-base: 15px;
+    --font-size-sm: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --font-size-title: 19px;
+    --font-size-sub-title: 15px;
+    --font-size-base: 14px;
+    --font-size-sm: 13px;
+  }
 }
