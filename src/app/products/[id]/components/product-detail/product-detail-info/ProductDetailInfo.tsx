@@ -27,7 +27,7 @@ function ProductDetailInfo({
         {dataImg.map((image) => {
           return (
             <li className={styles.detailImage} key={image}>
-              <img src={image} alt={dataTitle} />
+              <img src={image} alt={dataTitle} loading="lazy" />
             </li>
           )
         })}

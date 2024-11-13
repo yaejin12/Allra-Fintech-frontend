@@ -55,7 +55,7 @@ function ProductDetailTop({ data }: ProductDetailTopProps) {
       <div className={styles.productDetailTopWrapper}>
         {/* 오른쪽 이미지 */}
         <div className={styles.productMainImgWrapper}>
-          <img src={images[0]} alt={title} />
+          <img src={images[0]} alt={title} loading="lazy" decoding="async" />
         </div>
         {/* 왼쪽 정보 */}
         <div className={styles.productTopInfoWrapper}>
