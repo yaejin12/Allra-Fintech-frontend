@@ -13,7 +13,9 @@ export interface Review {
 export interface ProductsDetailReviewProps {
   reviewData: Review[]
 }
-
+/**
+ * ProductsDetailReview - 제품 리뷰 컴포넌트
+ */
 function ProductsDetailReview({ reviewData }: ProductsDetailReviewProps) {
   return (
     <ProductDetailTemplate titleText={`Review(${reviewData.length})`}>
