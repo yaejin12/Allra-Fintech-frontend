@@ -24,7 +24,6 @@ function ProductDetailTop({ data }: ProductDetailTopProps) {
     warrantyInformation,
     stock,
     minimumOrderQuantity,
-    availabilityStatus,
   } = data
 
   // 제품의 재고 버그 수정
@@ -53,6 +52,7 @@ function ProductDetailTop({ data }: ProductDetailTopProps) {
                 )
               })}
             </div>
+            
             {/* brand & category */}
             <div className={styles.brandAndCategory}>
               {/* brand 없는 제품도 있어서 && 연산자로 작업함 */}

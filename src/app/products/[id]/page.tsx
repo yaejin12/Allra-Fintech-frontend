@@ -3,9 +3,9 @@
 import { Suspense, use } from 'react'
 import { useProduct } from '@/app/products/[id]/hooks/use-product'
 import ProductDetailTop from './components/product-detail/product-detail-top/ProductDetailTop'
-import { log } from 'console'
 import '@/assets/css/common.css'
 import ProductDetailInfo from './components/product-detail/product-detail-info/ProductDetailInfo'
+import ProductsDetailReview from './components/product-detail/products-detail-review/ProductsDetailReview'
 
 export interface ProductDetailPageProps {
   params: Promise<{ id: string }>
@@ -15,7 +15,6 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const { id } = use(params)
 
   const { data, isLoading, error } = useProduct(id)
-  console.log(data)
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -35,6 +34,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
         dataWeight={data!.weight}
         dataTitle={data!.title}
       />
+      <ProductsDetailReview reviewData={data!.reviews} />
     </Suspense>
   )
 }

@@ -1,0 +1,40 @@
+.reviewWrapper {
+  width: 100%;
+  // 한개 리뷰
+  .reviewItemWrapper {
+    width: 100%;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--color-border);
+
+    .reviewItemWriterInfoWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      //리뷰 이름 별점 부분
+      .reviewItemWriter {
+        display: flex;
+        align-items: center;
+        p {
+          margin-left: 15px;
+          color: var(--color-gray);
+          font-size: var(--font-size-sm);
+        }
+      }
+
+      // date 부분
+      .reviewItemWriterDate {
+        margin-left: 15px;
+        color: var(--color-gray);
+        font-size: var(--font-size-sm);
+      }
+    }
+
+    // ====
+    // 리뷰 내용
+    .reviewComment {
+      padding-top: 30px;
+      font-size: var(--font-size-base);
+    }
+  }
+}
