@@ -22,7 +22,7 @@
     // 왼쪽 정보
     .productTopInfoWrapper {
       width: calc(100% - 786px);
-      border-top: 4px solid var(--color-border);
+      border-top: 3px solid var(--color-border);
       height: 740px;
       display: flex;
       flex-direction: column;
@@ -138,7 +138,7 @@
           color: var(--color-border);
           background-color: transparent;
           margin-right: 10px;
-          background: url('../../../../../../public/chevron-down-solid.svg')
+          background: url('../../../../../../../public/chevron-down-solid.svg')
             no-repeat right 24px center;
         }
       }
@@ -258,6 +258,7 @@
       // 왼쪽 정보
       .productTopInfoWrapper {
         width: 100%;
+        height: 100%;
         border-top: none;
 
         // 왼쪽 정보 -상단
@@ -311,6 +312,78 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .productDetailTopSection {
+    display: flex;
+    justify-content: center;
+    .productDetailTopWrapper {
+      display: flex;
+      flex-direction: column;
+
+      // 오른쪽 이미지
+      .productMainImgWrapper {
+        width: 100%;
+        height: 100%;
+      }
+      // 왼쪽 정보
+      .productTopInfoWrapper {
+        width: 100%;
+
+        // 왼쪽 정보 -상단
+        .productInfoHeader {
+          padding: 30px 0;
+
+          // brand & category
+          .brandAndCategory {
+            margin: 15px 0 3px 0;
+          }
+          // price & sale
+          .priceWrapper {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-weight: 700;
+
+            .price {
+              margin-right: 10px;
+            }
+          }
+
+          // description
+          .description {
+            margin-top: 30px;
+            height: auto;
+            align-items: end;
+            p {
+              word-break: keep-all;
+              font-size: var(--font-size-base);
+            }
+          }
+        }
+
+        // 왼쪽 정보 -하단
+        .productInfoBottom {
+          padding: 30px 0;
+        }
+
+        // Button
+        .addToCartButton {
+          padding-top: 30px;
+          select {
+            padding: 0 15px;
+            height: 50px;
+            width: 150px;
+            margin-right: 10px;
+            background: url('../../../../../../../public/chevron-down-solid.svg')
+              no-repeat right 15px center;
+            background-size: 17px 17px;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 500px) {
   .productDetailTopSection {
     .productDetailTopWrapper {
@@ -334,14 +407,28 @@
         // 왼쪽 정보 -하단
         .productInfoBottom {
           padding: 20px 5px;
+          li {
+            margin-bottom: 20px;
+            span {
+              display: block;
+              margin-right: 0;
+            }
+            &:nth-last-child(1) {
+              margin-bottom: 0;
+            }
+          }
         }
 
         // Button
         .addToCartButton {
           padding-top: 30px;
           select {
-            width: 150px;
-            margin-right: 10px;
+            height: 40px;
+            width: 90px;
+            margin-right: 5px;
+            background: url('../../../../../../../public/chevron-down-solid.svg')
+              no-repeat right 8px center;
+            background-size: 12px 12px;
           }
         }
       }
