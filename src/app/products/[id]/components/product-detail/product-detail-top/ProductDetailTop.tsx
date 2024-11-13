@@ -9,6 +9,9 @@ export interface ProductDetailTopProps {
   data: ProductDetail
 }
 
+/**
+ * ProductDetailTop - 제품의 상단 상세 정보를 표시하는 컴포넌트
+ */
 function ProductDetailTop({ data }: ProductDetailTopProps) {
   const {
     rating,
@@ -26,9 +29,25 @@ function ProductDetailTop({ data }: ProductDetailTopProps) {
     minimumOrderQuantity,
   } = data
 
-  // 제품의 재고 버그 수정
+  /**
+   * 재고 상태에 따라 버튼 활성화 여부를 결정
+   * 최소 주문 수량이 현재 재고보다 적거나 같을 때 'primary',
+   * 그렇지 않을 경우 'disabled' 상태를 반환
+   */
   const calculateAvailability = () => {
     return minimumOrderQuantity <= stock ? 'primary' : 'disabled'
+  }
+
+  /**
+   * 재고가 최소 주문 수량 이상일 경우 선택 가능한 최대 수량을 계산,
+   * 그렇지 않으면 최소 주문 수량을 반환
+   */
+  const calculateSelectQuantity = () => {
+    if (stock - minimumOrderQuantity >= 0) {
+      return stock - minimumOrderQuantity + 1
+    } else {
+      return 1
+    }
   }
 
   return (
@@ -52,7 +71,7 @@ function ProductDetailTop({ data }: ProductDetailTopProps) {
                 )
               })}
             </div>
-            
+
             {/* brand & category */}
             <div className={styles.brandAndCategory}>
               {/* brand 없는 제품도 있어서 && 연산자로 작업함 */}
@@ -93,7 +112,7 @@ function ProductDetailTop({ data }: ProductDetailTopProps) {
             {/* Button */}
             <div className={styles.addToCartButton}>
               <select name="num">
-                {Array(15)
+                {Array(calculateSelectQuantity())
                   .fill(0)
                   .map((_, i) => {
                     return (

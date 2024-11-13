@@ -15,7 +15,13 @@ function ProductReviewItem({
   const { rating, reviewerName, date, comment } = review
 
   // =============함수 선언=================
-  //1. 이름 마크업 함수
+  /**
+   * @param name 리뷰 작성자 이름
+   * @returns
+   * 이름 3글자 이상 : 3글자만 보여줌
+   * 3글자 이하: 1글자만 보여줌
+   * ex) lee******
+   */
   const markWriterName = (name: string) => {
     if (name.length >= 3) {
       return name.replace(/(?<=.{3})[^ ]/gi, '*')
@@ -23,8 +29,12 @@ function ProductReviewItem({
       return name.replace(/(?<=.{1})[^ ]/gi, '*')
     }
   }
-
-  // 2. 날짜 커스텀
+  /**
+   *
+   * @param date 리뷰 쓴 날짜
+   * @returns  날짜 커스텀
+   * ex) 2024년 12월 12일
+   */
   const customDate = (date: string) => {
     const dateOnly = date.replace(/T.*$/, '').split('-') // T 이후 삭제
     return `${dateOnly[0]}년 ${dateOnly[1]}월 ${dateOnly[2]}일`

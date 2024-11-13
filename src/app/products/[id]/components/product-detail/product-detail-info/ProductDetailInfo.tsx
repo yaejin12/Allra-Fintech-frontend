@@ -8,7 +8,10 @@ export interface ProductDetailInfoProps {
   dataWeight: number
   dataTitle: string
 }
-
+/**
+ * ProductDetailInfo - 제품의 상세 정보 섹션을 구성하는 컴포넌트
+ * 이 컴포넌트는 제품 이미지와 제품 크기(가로, 세로, 깊이, 무게)를 표 형식으로 보여준다
+ */
 function ProductDetailInfo({
   dataImg,
   dataSize,
