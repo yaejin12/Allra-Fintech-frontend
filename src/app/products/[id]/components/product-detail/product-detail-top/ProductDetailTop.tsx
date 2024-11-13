@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import styles from '@/app/products/(list)/components/product-detail-top/ProductDetailTop.module.scss'
+import styles from '@/app/products/[id]/components/product-detail/product-detail-top/ProductDetailTop.module.scss'
 import { Badge } from '@/components/ui/badge'
 import { RatingStars } from '@/components/rating-stars'
 import { ProductDetail } from '@/schemas/product'

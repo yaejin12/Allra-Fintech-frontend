@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '@/app/products/(list)/components/product-detail-info/ProductDetailInfo.module.scss'
+import styles from '@/app/products/[id]/components/product-detail/product-detail-info/ProductDetailInfo.module.scss'
 
 export interface ProductDetailInfoProps {
   dataImg: string[]
