@@ -35,6 +35,56 @@
     .reviewComment {
       padding-top: 30px;
       font-size: var(--font-size-base);
+      word-break: keep-all;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .reviewWrapper {
+    // 한개 리뷰
+    .reviewItemWrapper {
+      width: 100%;
+      padding: 20px 0;
+
+      .reviewItemWriterInfoWrapper {
+        //리뷰 이름 별점 부분
+        .reviewItemWriter {
+          p {
+          }
+        }
+
+        // date 부분
+        .reviewItemWriterDate {
+          margin-left: 15px;
+        }
+      }
+
+      // ====
+      // 리뷰 내용
+      .reviewComment {
+        padding-top: 30px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .reviewWrapper {
+    // 한개 리뷰
+    .reviewItemWrapper {
+      .reviewItemWriterInfoWrapper {
+        align-items: start;
+        //리뷰 이름 별점 부분
+        .reviewItemWriter {
+          flex-direction: column;
+          align-items: start;
+
+          p {
+            margin: 5px 0 0 0;
+          }
+        }
+      }
     }
   }
 }

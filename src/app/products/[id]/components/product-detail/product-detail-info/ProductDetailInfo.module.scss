@@ -54,3 +54,71 @@
     }
   }
 }
+
+@media screen and (max-width: 1535px) {
+  // 이미지 wrapper
+  .productImagesWrapper {
+    // 각각 이미지
+    .detailImage {
+      width: 700px;
+      height: 700px;
+      margin-bottom: 20px;
+    }
+  }
+
+  // 표
+  .sizeTable {
+    width: 700px;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  // 표
+  .sizeTable {
+    tr {
+      th,
+      td {
+        padding: 5px 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .productImagesWrapper {
+    padding: 40px 0;
+
+    // 각각 이미지
+    .detailImage {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  // 표
+  .sizeTable {
+    width: 100%;
+    tr {
+      th,
+      td {
+        padding: 8px 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  // 이미지 wrapper
+  .productImagesWrapper {
+    padding: 30px 0;
+  }
+  // 표
+  .sizeTable {
+    tr {
+      th,
+      td {
+        padding: 3px 0;
+      }
+    }
+  }
+}

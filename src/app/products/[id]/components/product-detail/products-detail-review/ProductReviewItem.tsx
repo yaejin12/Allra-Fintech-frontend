@@ -37,7 +37,7 @@ function ProductReviewItem({
         {/* 별 & 작성자 wrapper */}
         <div className={styles.reviewItemWriter}>
           {/* stars */}
-          <RatingStars rating={rating} />
+          <RatingStars rating={rating} size={15} />
           {/* 작성자 */}
           <p>{markWriterName(reviewerName)}</p>
         </div>

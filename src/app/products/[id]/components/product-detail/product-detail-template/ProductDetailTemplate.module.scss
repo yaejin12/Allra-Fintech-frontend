@@ -19,3 +19,27 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .productDetailInfoSection {
+    .productDetailInfoWrapper {
+      padding-top: 150px;
+
+      .productDetailInfoTitle {
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .productDetailInfoSection {
+    .productDetailInfoWrapper {
+      padding-top: 80px;
+
+      .productDetailInfoTitle {
+        padding-bottom: 5px;
+      }
+    }
+  }
+}
