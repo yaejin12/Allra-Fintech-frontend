@@ -1,0 +1,75 @@
+.productDetailInfoSection {
+  width: 100%;
+  height: 100%;
+
+  .productDetailInfoWrapper {
+    width: 100%;
+    padding: 200px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .productDetailInfoTitle {
+      padding-bottom: 10px;
+      width: 100%;
+      font-size: var(--font-size-title);
+      font-weight: 600;
+      color: var(--color-border);
+      border-bottom: 4px solid var(--color-border);
+    }
+
+    // 이미지 wrapper
+    .productImagesWrapper {
+      padding: 70px 0;
+
+      // 각각 이미지
+      .detailImage {
+        width: 800px;
+        height: 800px;
+        margin-bottom: 30px;
+        border: 1px solid var(--color-border);
+
+        img {
+          object-fit: contain;
+          width: 100%;
+          height: 100%;
+        }
+
+        &:nth-last-child(1) {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    // 표
+    table {
+      border-collapse: collapse;
+      width: 800px;
+      font-size: var(--font-size-base);
+      tr {
+        th,
+        td {
+          padding: 8px 0;
+          vertical-align: middle;
+        }
+      }
+      thead {
+        tr {
+          th {
+            background-color: var(--color-point-sub);
+            color: var(--color-point);
+            border: none;
+          }
+        }
+      }
+      tbody {
+        tr {
+          td {
+            text-align: center;
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,7 @@ import { useProduct } from '@/app/products/[id]/hooks/use-product'
 import ProductDetailTop from '../(list)/components/product-detail-top/ProductDetailTop'
 import { log } from 'console'
 import '@/assets/css/common.css'
+import ProductDetailInfo from '../(list)/components/product-detail-info/ProductDetailInfo'
 
 export interface ProductDetailPageProps {
   params: Promise<{ id: string }>
@@ -28,6 +29,12 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   return (
     <Suspense>
       <ProductDetailTop data={data!} />
+      <ProductDetailInfo
+        dataImg={data!.images}
+        dataSize={data!.dimensions}
+        dataWeight={data!.weight}
+        dataTitle={data!.title}
+      />
     </Suspense>
   )
 }
