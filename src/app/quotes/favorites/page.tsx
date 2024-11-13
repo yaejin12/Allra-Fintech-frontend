@@ -4,7 +4,7 @@ import { QuoteCard } from '@/app/quotes/components/quote-card'
 
 export default function FavoriteQuotesPage() {
   const favoriteQuotes = useFavoriteQuotes()
-
+// Favorite 페이지
   return (
     <div>
       <h1

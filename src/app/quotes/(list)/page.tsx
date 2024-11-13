@@ -3,9 +3,9 @@
 import { useInfiniteQuotes } from '@/app/quotes/hooks/use-infinite-quotes'
 import { QuoteCard } from '@/app/quotes/components/quote-card'
 
+//list 페이지
 export default function QuotesPage() {
   const quotes = useInfiniteQuotes()
-
   return (
     <>
       {quotes.map((quote) => (
