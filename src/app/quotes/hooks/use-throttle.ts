@@ -1,5 +1,8 @@
 import { useRef } from 'react'
 
+/**
+ * @returns Throttle 구현
+ */
 function useThrottle<T extends any[]>(
   callback: (...params: T) => void,
   time: number

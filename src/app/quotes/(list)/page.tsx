@@ -4,8 +4,6 @@ import { useInfiniteQuotes } from '@/app/quotes/hooks/use-infinite-quotes'
 import { QuoteCard } from '@/app/quotes/components/quote-card'
 import { useInView } from 'react-intersection-observer'
 import { useEffect } from 'react'
-
-import { useRef } from 'react'
 import useThrottle from '../hooks/use-throttle'
 
 /**
@@ -28,12 +26,12 @@ export default function QuotesPage() {
     threshold: 0.9,
   })
 
+  // fetch Throttle로 중복 호출 제한
   const fetchNextPageThrottle = useThrottle(fetchNextPage, 1000)
 
   useEffect(() => {
     if (inView && !isFetching && hasNextPage) {
       fetchNextPageThrottle()
-      console.log('inView', inView)
     }
   }, [inView])
 
