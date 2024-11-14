@@ -1,17 +1,35 @@
 'use client'
 
-import {
-  getInfiniteQuotes,
-  useInfiniteQuotes,
-} from '@/app/quotes/hooks/use-infinite-quotes'
+import { useInfiniteQuotes } from '@/app/quotes/hooks/use-infinite-quotes'
 import { QuoteCard } from '@/app/quotes/components/quote-card'
-import { error } from 'console'
+import { useInView } from 'react-intersection-observer'
+import { useEffect } from 'react'
 
-//list 페이지
+/**
+ *
+ * @returns 무한 스크롤로 Quotes 목록을 보여주는 페이지 컴포넌트
+ */
 export default function QuotesPage() {
-  const quotes = getInfiniteQuotes()
-  const { data, isLoading, isError, error } = useInfiniteQuotes()
-  console.log('data', data)
+  const {
+    data,
+    isLoading,
+    isError,
+    error,
+    fetchNextPage,
+    isFetching,
+    hasNextPage,
+  } = useInfiniteQuotes()
+
+  // // Intersection Observer 훅을 사용
+  const { ref, inView } = useInView({
+    threshold: 0.8,
+  })
+
+  useEffect(() => {
+    if (inView && !isFetching && hasNextPage) {
+      fetchNextPage()
+    }
+  }, [inView, hasNextPage, fetchNextPage, isFetching])
 
   if (isLoading) {
     return <div>loading</div>
@@ -25,17 +43,23 @@ export default function QuotesPage() {
 
   return (
     <>
-      {data?.quotes.map((quote) => (
-        <QuoteCard
-          key={quote.id}
-          quote={quote.quote}
-          author={quote.author}
-          isFavorite={false}
-          onFavorite={() => {
-            console.log('Clicked on favorite')
-          }}
-        />
-      ))}
+      {data?.pages
+        ?.map((page) => page.quotes)
+        .flat()
+        .map((quote) => {
+          return (
+            <QuoteCard
+              key={quote.id}
+              quote={quote.quote}
+              author={quote.author}
+              isFavorite={false}
+              onFavorite={() => {
+                console.log('Clicked on favorite')
+              }}
+            />
+          )
+        })}
+      <div ref={ref} style={{ width: '100%', height: '200px' }}></div>
     </>
   )
 }
