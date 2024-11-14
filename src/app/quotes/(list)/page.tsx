@@ -4,6 +4,7 @@ import { useInfiniteQuotes } from '@/app/quotes/hooks/use-infinite-quotes'
 import { QuoteCard } from '@/app/quotes/components/quote-card'
 import { useInView } from 'react-intersection-observer'
 import { useEffect } from 'react'
+import useThrottle from '../hooks/use-throttle'
 
 /**
  *
@@ -22,14 +23,17 @@ export default function QuotesPage() {
 
   // // Intersection Observer 훅을 사용
   const { ref, inView } = useInView({
-    threshold: 0.8,
+    threshold: 0.9,
   })
+
+  // fetch Throttle로 중복 호출 제한
+  const fetchNextPageThrottle = useThrottle(fetchNextPage, 1000)
 
   useEffect(() => {
     if (inView && !isFetching && hasNextPage) {
-      fetchNextPage()
+      fetchNextPageThrottle()
     }
-  }, [inView, hasNextPage, fetchNextPage, isFetching])
+  }, [inView])
 
   if (isLoading) {
     return <div>loading</div>
@@ -59,7 +63,7 @@ export default function QuotesPage() {
             />
           )
         })}
-      <div ref={ref} style={{ width: '100%', height: '200px' }}></div>
+      <div ref={ref} style={{ width: '100%', height: '80px' }}></div>
     </>
   )
 }
