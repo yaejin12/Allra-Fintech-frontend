@@ -4,7 +4,7 @@ import { QuoteCard } from '@/app/quotes/components/quote-card'
 
 export default function FavoriteQuotesPage() {
   const favoriteQuotes = useFavoriteQuotes()
-// Favorite 페이지
+  // Favorite 페이지
   return (
     <div>
       <h1
@@ -13,7 +13,7 @@ export default function FavoriteQuotesPage() {
         My Favorite
       </h1>
       <ul>
-        {favoriteQuotes.map((quote) => (
+        {/* {favoriteQuotes.map((quote) => (
           <QuoteCard
             key={quote.id}
             quote={quote.quote}
@@ -23,7 +23,7 @@ export default function FavoriteQuotesPage() {
               console.log('Clicked on favorite')
             }}
           />
-        ))}
+        ))} */}
       </ul>
     </div>
   )
