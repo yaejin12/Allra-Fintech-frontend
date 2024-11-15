@@ -41,14 +41,13 @@ export default function QuotesPage() {
 
   // data가 변경될때 quotesData 상태에 저장
   useEffect(() => {
-    setQuotesData(data?.pages.map((page) => page.quotes).flat() || [])
+    data && setQuotesData(data?.pages.map((page) => page.quotes).flat())
   }, [data])
 
   // ===== Favorite 클릭 이벤트 =====
   const isClickFavorite = (id: number) => {
-    console.log('Clicked on favorite', id)
     const filterQuote = useFindQuotesId(quotesData, id)
-    localStorage.setItem('favoriteQuotes', JSON.stringify(filterQuote))
+    localStorage.setItem('favoriteQuotes', JSON.stringify([filterQuote]))
   }
 
   // ===== 화면 랜더링 =====
