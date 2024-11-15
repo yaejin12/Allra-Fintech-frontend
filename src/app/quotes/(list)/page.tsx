@@ -6,7 +6,10 @@ import { useInView } from 'react-intersection-observer'
 import { useEffect, useState } from 'react'
 import useThrottle from '../hooks/use-throttle'
 import { Quotes } from '@/schemas/quotes'
-import useFindQuotesId from '../hooks/use-find-quotes-id'
+import {
+  updateFavoriteList,
+  useFindQuotesId,
+} from '../hooks/use-find-quotes-id'
 
 /**
  * @returns 무한 스크롤로 Quotes 목록을 보여주는 페이지 컴포넌트
@@ -46,8 +49,9 @@ export default function QuotesPage() {
 
   // ===== Favorite 클릭 이벤트 =====
   const isClickFavorite = (id: number) => {
-    const filterQuote = useFindQuotesId(quotesData, id)
-    localStorage.setItem('favoriteQuotes', JSON.stringify([filterQuote]))
+    // localStorage에 저장 삭제.
+    updateFavoriteList(id, quotesData)
+    
   }
 
   // ===== 화면 랜더링 =====
