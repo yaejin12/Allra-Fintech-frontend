@@ -1,10 +1,11 @@
 'use client'
-import { useFavoriteQuotes } from '@/app/quotes/hooks/use-favorite-quotes'
+import { useGetFavoriteQuotes } from '@/app/quotes/hooks/use-favorite-quotes'
 import { QuoteCard } from '@/app/quotes/components/quote-card'
 import { Quotes } from '@/schemas/quotes'
 
 export default function FavoriteQuotesPage() {
-  const favoriteQuotes = useFavoriteQuotes()
+  const favoriteQuotes = useGetFavoriteQuotes()
+
   // Favorite 페이지
   return (
     <div>

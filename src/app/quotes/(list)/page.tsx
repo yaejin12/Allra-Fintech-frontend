@@ -3,13 +3,11 @@
 import { useInfiniteQuotes } from '@/app/quotes/hooks/use-infinite-quotes'
 import { QuoteCard } from '@/app/quotes/components/quote-card'
 import { useInView } from 'react-intersection-observer'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import useThrottle from '../hooks/use-throttle'
 import { Quotes } from '@/schemas/quotes'
-import {
-  updateFavoriteList,
-  useFindQuotesId,
-} from '../hooks/use-find-quotes-id'
+import { updateFavoriteList } from '../hooks/use-favorite-quotes'
+import { useGetFavoriteQuotes } from '../hooks/use-favorite-quotes'
 
 /**
  * @returns 무한 스크롤로 Quotes 목록을 보여주는 페이지 컴포넌트
@@ -27,6 +25,10 @@ export default function QuotesPage() {
 
   // Quotes fetch 상태 관리 : 구조가 복잡해서 가독성과 재사용성이 용의하게 상태관리
   const [quotesData, setQuotesData] = useState<Quotes[]>([])
+
+  const [getFavoritesData, setGetFavoriteData] = useState<Quotes[]>(
+    useGetFavoriteQuotes()
+  )
 
   // // Intersection Observer 훅을 사용
   const { ref, inView } = useInView({
@@ -51,7 +53,14 @@ export default function QuotesPage() {
   const isClickFavorite = (id: number) => {
     // localStorage에 저장 삭제.
     updateFavoriteList(id, quotesData)
-    
+    setGetFavoriteData(useGetFavoriteQuotes())
+  }
+
+  const isItemFavorite = (id: number) => {
+    return (
+      getFavoritesData &&
+      getFavoritesData.map((favorite: Quotes) => favorite.id).includes(id)
+    )
   }
 
   // ===== 화면 랜더링 =====
@@ -73,7 +82,7 @@ export default function QuotesPage() {
             key={quote.id}
             quote={quote.quote}
             author={quote.author}
-            isFavorite={false}
+            isFavorite={isItemFavorite(quote.id)}
             onFavorite={() => {
               isClickFavorite(quote.id)
             }}
