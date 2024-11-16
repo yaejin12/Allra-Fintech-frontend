@@ -1,15 +1,16 @@
 import { Quotes } from '@/schemas/quotes'
 import { useFindQuotesId } from './use-find-quotes-id'
 
-
 /**
- * 
+ *
  * @returns localStorage에 저장된 정보 불러오기
  */
 export const useGetFavoriteQuotes = () => {
-  const getItemFavoriteQuotes = localStorage.getItem('favoriteQuotes')
-  if (getItemFavoriteQuotes) {
-    return JSON.parse(getItemFavoriteQuotes)
+  if (typeof window !== 'undefined') {
+    const getItemFavoriteQuotes = localStorage.getItem('favoriteQuotes')
+    if (getItemFavoriteQuotes) {
+      return JSON.parse(getItemFavoriteQuotes)
+    }
   }
 
   return undefined
