@@ -8,12 +8,10 @@ import { useFindQuotesId } from './use-find-quotes-id'
 export const useGetFavoriteQuotes = () => {
   if (typeof window !== 'undefined') {
     const getItemFavoriteQuotes = localStorage.getItem('favoriteQuotes')
-    if (getItemFavoriteQuotes) {
-      return JSON.parse(getItemFavoriteQuotes)
-    }
+    return getItemFavoriteQuotes ? JSON.parse(getItemFavoriteQuotes) : []
   }
 
-  return undefined
+  return []
 }
 
 /**
@@ -23,35 +21,31 @@ export const useGetFavoriteQuotes = () => {
  * @returns
  */
 
-export function updateFavoriteList(id: number, quotesData?: Quotes[]) {
-  const favoriteQuotes = useGetFavoriteQuotes()
-
+export function updateFavoriteList(
+  id: number,
+  favoriteQuotes: Quotes[],
+  quotesData?: Quotes[]
+) {
   // 1. 클릭한 아이디가 `favoriteQuotes`에 있는지 확인
   const { isFindQuotesId, findData } = useFindQuotesId(favoriteQuotes, id)
 
   // 2. 동일한 아이디가 존재하면 `favoriteQuotes`에서 제거
-  if (isFindQuotesId) {
+  if (isFindQuotesId && findData) {
     const removeFavoriteQuotes = favoriteQuotes.filter(
-      (quote: Quotes) => quote.id !== findData!.id
+      (quote: Quotes) => quote.id !== findData.id
     )
-
     localStorage.setItem('favoriteQuotes', JSON.stringify(removeFavoriteQuotes))
   } else {
     // 3. 아이디가 존재하지 않는 경우 처리
-
     if (quotesData) {
       // 클릭한 아이디의 데이터를 검색
       const { findData } = useFindQuotesId(quotesData, id)
-
       // 기존 favoriteQuotes가 있을 경우
-      if (favoriteQuotes) {
+      if (findData) {
         localStorage.setItem(
           'favoriteQuotes',
           JSON.stringify([...favoriteQuotes, findData])
         )
-      } else {
-        // favoriteQuotes가 없을 경우
-        localStorage.setItem('favoriteQuotes', JSON.stringify([findData]))
       }
     }
   }

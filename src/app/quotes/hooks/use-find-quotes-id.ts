@@ -1,5 +1,5 @@
 import { Quotes } from '@/schemas/quotes'
-import { updateFavoriteList, useGetFavoriteQuotes } from './use-favorite-quotes'
+import { useGetFavoriteQuotes } from './use-favorite-quotes'
 
 /**
  * 특정 ID를 가진 데이터를 찾아주는 함수입니다.
@@ -20,12 +20,8 @@ export function useFindQuotesId(data: Quotes[], id: number) {
 /**
  * 특정 ID가 localStorage에 저장 되어있는지 유무 확인
  * @param id 찾고자 하는 아이디 값
- * @returns 
+ * @returns
  */
-export const isItemFavorite = (id: number) => {
-  const getFavoritesData = useGetFavoriteQuotes()
-  return (
-    getFavoritesData &&
-    getFavoritesData.map((favorite: Quotes) => favorite.id).includes(id)
-  )
+export const isFavorite = (id: number, getFavoritesData: Quotes[]) => {
+  return getFavoritesData.map((favorite: Quotes) => favorite.id).includes(id)
 }

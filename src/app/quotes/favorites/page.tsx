@@ -5,8 +5,8 @@ import {
 } from '@/app/quotes/hooks/use-favorite-quotes'
 import { QuoteCard } from '@/app/quotes/components/quote-card'
 import { Quotes } from '@/schemas/quotes'
-import { useState } from 'react'
-import { isItemFavorite } from '../hooks/use-find-quotes-id'
+import { useEffect, useState } from 'react'
+import { isFavorite } from '../hooks/use-find-quotes-id'
 
 /**
  *
@@ -14,16 +14,19 @@ import { isItemFavorite } from '../hooks/use-find-quotes-id'
  */
 export default function FavoriteQuotesPage() {
   const favoriteQuotes = useGetFavoriteQuotes()
-  const [getFavoritesData, setGetFavoriteData] = useState<Quotes[]>(
-    useGetFavoriteQuotes()
-  )
+  const [getFavoritesData, setGetFavoriteData] = useState<Quotes[]>([])
 
-  // Favorite 페이지
-  const isClickFavorite = (id: number) => {
+  // Favorite 페이지 즐겨찾기 클릭 이벤트
+  const isClickFavoriteHandler = (id: number) => {
     // localStorage에 삭제.
-    updateFavoriteList(id)
+    updateFavoriteList(id, getFavoritesData)
     setGetFavoriteData(useGetFavoriteQuotes())
   }
+
+  // 초기 FavoriteData 담기
+  useEffect(() => {
+    setGetFavoriteData(useGetFavoriteQuotes())
+  }, [])
 
   return (
     <div>
@@ -39,9 +42,9 @@ export default function FavoriteQuotesPage() {
               key={quote.id}
               quote={quote.quote}
               author={quote.author}
-              isFavorite={isItemFavorite(quote.id)}
+              isFavorite={isFavorite(quote.id, getFavoritesData)}
               onFavorite={() => {
-                isClickFavorite(quote.id)
+                isClickFavoriteHandler(quote.id)
               }}
             />
           ))}
