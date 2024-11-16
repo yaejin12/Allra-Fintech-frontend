@@ -23,5 +23,5 @@ export function useFindQuotesId(data: Quotes[], id: number) {
  * @returns
  */
 export const isFavorite = (id: number, getFavoritesData: Quotes[]) => {
-  return getFavoritesData.map((favorite: Quotes) => favorite.id).includes(id)
+  return getFavoritesData.some((favorite: Quotes) => favorite.id === id)
 }
