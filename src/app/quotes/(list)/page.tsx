@@ -8,6 +8,7 @@ import useThrottle from '../hooks/use-throttle'
 import { Quotes } from '@/schemas/quotes'
 import { updateFavoriteList } from '../hooks/use-favorite-quotes'
 import { useGetFavoriteQuotes } from '../hooks/use-favorite-quotes'
+import { isItemFavorite } from '../hooks/use-find-quotes-id'
 
 /**
  * @returns 무한 스크롤로 Quotes 목록을 보여주는 페이지 컴포넌트
@@ -54,13 +55,6 @@ export default function QuotesPage() {
     // localStorage에 저장 삭제.
     updateFavoriteList(id, quotesData)
     setGetFavoriteData(useGetFavoriteQuotes())
-  }
-
-  const isItemFavorite = (id: number) => {
-    return (
-      getFavoritesData &&
-      getFavoritesData.map((favorite: Quotes) => favorite.id).includes(id)
-    )
   }
 
   // ===== 화면 랜더링 =====
