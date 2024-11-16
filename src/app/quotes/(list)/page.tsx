@@ -8,7 +8,7 @@ import useThrottle from '../hooks/use-throttle'
 import { Quotes } from '@/schemas/quotes'
 import { updateFavoriteList } from '../hooks/use-favorite-quotes'
 import { useGetFavoriteQuotes } from '../hooks/use-favorite-quotes'
-import { isItemFavorite } from '../hooks/use-find-quotes-id'
+import { isFavorite } from '../hooks/use-find-quotes-id'
 
 /**
  * @returns 무한 스크롤로 Quotes 목록을 보여주는 페이지 컴포넌트
@@ -26,19 +26,16 @@ export default function QuotesPage() {
 
   // Quotes fetch 상태 관리 : 구조가 복잡해서 가독성과 재사용성이 용의하게 상태관리
   const [quotesData, setQuotesData] = useState<Quotes[]>([])
+  // localStorage에 저장되있는 Favorites 상태관리
+  const [getFavoritesData, setGetFavoriteData] = useState<Quotes[]>([])
 
-  const [getFavoritesData, setGetFavoriteData] = useState<Quotes[]>(
-    useGetFavoriteQuotes()
-  )
-
-  // // Intersection Observer 훅을 사용
+  // // Intersection Observer 훅을 사용(최상단 감지)
   const { ref, inView } = useInView({
     threshold: 0.9,
   })
 
   // fetch Throttle로 중복 호출 제한
   const fetchNextPageThrottle = useThrottle(fetchNextPage, 500)
-
   useEffect(() => {
     if (inView && !isFetching && hasNextPage) {
       fetchNextPageThrottle()
@@ -50,10 +47,15 @@ export default function QuotesPage() {
     data && setQuotesData(data?.pages.map((page) => page.quotes).flat())
   }, [data])
 
+  // 초기 상태
+  useEffect(() => {
+    setGetFavoriteData(useGetFavoriteQuotes())
+  }, [])
+
   // ===== Favorite 클릭 이벤트 =====
-  const isClickFavorite = (id: number) => {
+  const isClickFavoriteHandler = (id: number) => {
     // localStorage에 저장 삭제.
-    updateFavoriteList(id, quotesData)
+    updateFavoriteList(id, getFavoritesData, quotesData)
     setGetFavoriteData(useGetFavoriteQuotes())
   }
 
@@ -76,9 +78,9 @@ export default function QuotesPage() {
             key={quote.id}
             quote={quote.quote}
             author={quote.author}
-            isFavorite={isItemFavorite(quote.id)}
+            isFavorite={isFavorite(quote.id, getFavoritesData)}
             onFavorite={() => {
-              isClickFavorite(quote.id)
+              isClickFavoriteHandler(quote.id)
             }}
           />
         )
