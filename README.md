@@ -1,6 +1,7 @@
 # allra fintech 🚀
 
 ```bash
+pnpm install
 pnpm add sass --save-dev #scss 설치하기(설치되어 있지 않은 경우)
 pnpm add react-intersection-observer #observer 설치하기(설치되어 있지 않은 경우)
 ```
@@ -14,20 +15,6 @@ pnpm add react-intersection-observer #observer 설치하기(설치되어 있지 
 - **[작업 내용]**
   - 응답 데이터를 처리한 후, 검색어(`q`)가 존재하는 경우, `title`에 검색어가 포함된 제품만 필터링하도록 구현했습니다.
   - 검색은 대소문자를 구분하지 않으며, `toLowerCase()`를 사용하여 검색어와 제품명을 비교합니다.  
-    
-
-  ```typescript
-  if (success) {
-    let newData = data
-    if (q && data?.products) {
-      const filterData = data?.products.filter((product) =>
-        product.title.toLowerCase().includes(q.toLowerCase())
-      )
-      newData = { ...newData, products: filterData }
-    }
-    return { status: 'success', data: newData }
-  }
-  ```
 
 <br/>
 <br/>
