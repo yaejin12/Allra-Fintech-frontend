@@ -1,0 +1,30 @@
+name: SCSS Setup and Build
+
+on:
+  push:
+    branches:
+      [ "main" ]
+  pull_request:
+    branches:
+      [ "main" ]
+
+jobs:
+  build_css:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        run: npm install -g pnpm  # pnpm 전역 설치
+
+      #의존성 설치 및 SCSS&observer추가
+      - name: Install SCSS and Observer Dependencies
+        run: |
+          pnpm install
+          pnpm add sass --save-dev #scss설치 
+          pnpm add react-intersection-observer #observer설치
+          pnpm install
+    
