@@ -5,7 +5,6 @@ import { SearchIcon } from 'lucide-react'
 import { useProductsSearchParams } from '@/app/products/(list)/hooks/use-products-search-params'
 
 // TODO: 현재 검색창이 제대로 동작하지 않습니다. 수정해주세요.
-
 export function ProductSearchInput({
   className,
   ...props

@@ -4,18 +4,20 @@ import { cn } from '@/lib/utils'
 
 export interface RatingStarsProps {
   rating: number
+  size?: number
 }
 
 export function RatingStars({
   className,
   rating,
+  size = 24,
   ...props
 }: RatingStarsProps & HTMLAttributes<HTMLDivElement>) {
   return (
     <main className={cn('flex items-center gap-1', className)} {...props}>
       {Array.from({ length: 5 }).map((_, index) => {
         const color = rating >= index + 1 ? '#FFD700' : '#C4C4C4'
-        return <Star key={index} fill={color} stroke={color} />
+        return <Star key={index} fill={color} stroke={color} size={size} />
       })}
     </main>
   )

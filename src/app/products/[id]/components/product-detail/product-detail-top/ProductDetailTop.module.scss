@@ -1,0 +1,449 @@
+.productDetailTopSection {
+  width: 100%;
+  height: 100%;
+
+  .productDetailTopWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    // 오른쪽 이미지
+    .productMainImgWrapper {
+      width: 740px;
+      height: 740px;
+      border: 1px solid var(--color-border);
+
+      img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    // 왼쪽 정보
+    .productTopInfoWrapper {
+      width: calc(100% - 786px);
+      border-top: 3px solid var(--color-border);
+      height: 740px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      // 왼쪽 정보 -상단
+      .productInfoHeader {
+        padding: 30px 10px;
+        border-bottom: 1px solid var(--color-border);
+
+        // tags
+        .productTags {
+          display: flex;
+
+          .tag {
+            margin-right: 5px;
+          }
+        }
+
+        // brand & category
+        .brandAndCategory {
+          display: flex;
+          margin: 25px 0 5px 0;
+
+          p {
+            color: var(--color-gray);
+            font-size: var(--font-size-sm);
+            &::after {
+              content: 'ㅣ';
+              margin: 0 3px;
+            }
+            &:nth-last-child(1):after {
+              content: '';
+            }
+          }
+        }
+
+        // title
+        .productName {
+          font-size: var(--font-size-title);
+          font-weight: 600;
+          margin-bottom: 24px;
+          line-height: 130%;
+        }
+
+        // price & sale
+        .priceWrapper {
+          display: flex;
+          align-items: center;
+          margin: 24px 0;
+          font-weight: 700;
+
+          .price {
+            font-size: var(--font-size-title);
+            margin-right: 10px;
+          }
+
+          .sale {
+            font-size: var(--font-size-sub-title);
+            color: var(--color-red);
+          }
+        }
+
+        // description
+        .description {
+          display: flex;
+          height: 200px;
+          align-items: end;
+          p {
+            word-break: keep-all;
+            font-size: var(--font-size-base);
+          }
+        }
+      }
+
+      // 왼쪽 정보 -하단
+      .productInfoBottom {
+        height: 100%;
+        padding: 30px 10px 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: var(--font-size-base);
+        li {
+          margin-bottom: 5px;
+
+          span {
+            font-weight: 600;
+            margin-right: 15px;
+          }
+          &:nth-child(3) {
+            font-style: italic;
+          }
+        }
+      }
+
+      // Button
+      .addToCartButton {
+        display: flex;
+        align-items: end;
+
+        select {
+          font-size: var(--font-size-base);
+          height: 60px;
+          width: 200px;
+          padding: 0 20px;
+          font-weight: 600;
+          -webkit-appearance: none; /* 크롬 화살표 없애기 */
+          -moz-appearance: none; /* 파이어폭스 화살표 없애기 */
+          appearance: none; /* 화살표 없애기 */
+          display: inline-block;
+          border: 1px solid var(--color-border);
+          color: var(--color-border);
+          background-color: transparent;
+          margin-right: 10px;
+          background: url('../../../../../../../public/chevron-down-solid.svg')
+            no-repeat right 24px center;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1535px) {
+  .productDetailTopSection {
+    .productDetailTopWrapper {
+      // 오른쪽 이미지
+      .productMainImgWrapper {
+        width: 600px;
+        height: 600px;
+      }
+      // 왼쪽 정보
+      .productTopInfoWrapper {
+        width: calc(100% - 646px);
+        height: 600px;
+        // 왼쪽 정보 -상단
+        .productInfoHeader {
+          padding: 25px 5px;
+
+          // brand & category
+          .brandAndCategory {
+            margin: 25px 0 5px 0;
+          }
+
+          // description
+          .description {
+            height: 100px;
+          }
+        }
+
+        // 왼쪽 정보 -하단
+        .productInfoBottom {
+          padding: 25px 5px 0 5px;
+        }
+
+        // Button
+        .addToCartButton {
+          select {
+            height: 60px;
+            width: 200px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .productDetailTopSection {
+    .productDetailTopWrapper {
+      // 오른쪽 이미지
+      .productMainImgWrapper {
+        width: 500px;
+        height: 500px;
+      }
+      // 왼쪽 정보
+      .productTopInfoWrapper {
+        width: calc(100% - 530px);
+        height: 500px;
+        // 왼쪽 정보 -상단
+        .productInfoHeader {
+          padding: 15px 5px;
+
+          // brand & category
+          .brandAndCategory {
+            margin: 15px 0 3px 0;
+          }
+          // price & sale
+          .priceWrapper {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-weight: 700;
+
+            .price {
+              margin-right: 10px;
+            }
+          }
+        }
+
+        // 왼쪽 정보 -하단
+        .productInfoBottom {
+          padding: 15px 5px 0 5px;
+        }
+
+        // Button
+        .addToCartButton {
+          select {
+            height: 50px;
+            width: 150px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .productDetailTopSection {
+    display: flex;
+    justify-content: center;
+    .productDetailTopWrapper {
+      display: flex;
+      flex-direction: column;
+
+      // 오른쪽 이미지
+      .productMainImgWrapper {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 100%;
+        overflow: hidden;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      // 왼쪽 정보
+      .productTopInfoWrapper {
+        width: 100%;
+        height: 100%;
+        border-top: none;
+
+        // 왼쪽 정보 -상단
+        .productInfoHeader {
+          padding: 30px 0;
+
+          // brand & category
+          .brandAndCategory {
+            margin: 15px 0 3px 0;
+          }
+          // price & sale
+          .priceWrapper {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-weight: 700;
+
+            .price {
+              margin-right: 10px;
+            }
+          }
+
+          // description
+          .description {
+            margin-top: 30px;
+            height: auto;
+            align-items: end;
+            p {
+              word-break: keep-all;
+              font-size: var(--font-size-base);
+            }
+          }
+        }
+
+        // 왼쪽 정보 -하단
+        .productInfoBottom {
+          padding: 30px 0;
+        }
+
+        // Button
+        .addToCartButton {
+          padding-top: 30px;
+          select {
+            height: 50px;
+            width: 150px;
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .productDetailTopSection {
+    display: flex;
+    justify-content: center;
+    .productDetailTopWrapper {
+      display: flex;
+      flex-direction: column;
+
+      // 오른쪽 이미지
+      .productMainImgWrapper {
+        // width: 100%;
+        // height: 100%;
+      }
+      // 왼쪽 정보
+      .productTopInfoWrapper {
+        width: 100%;
+
+        // 왼쪽 정보 -상단
+        .productInfoHeader {
+          padding: 30px 0;
+
+          // brand & category
+          .brandAndCategory {
+            margin: 15px 0 3px 0;
+          }
+          // price & sale
+          .priceWrapper {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            font-weight: 700;
+
+            .price {
+              margin-right: 10px;
+            }
+          }
+
+          // description
+          .description {
+            margin-top: 30px;
+            height: auto;
+            align-items: end;
+            p {
+              word-break: keep-all;
+              font-size: var(--font-size-base);
+            }
+          }
+        }
+
+        // 왼쪽 정보 -하단
+        .productInfoBottom {
+          padding: 30px 0;
+        }
+
+        // Button
+        .addToCartButton {
+          padding-top: 30px;
+          select {
+            padding: 0 15px;
+            height: 50px;
+            width: 150px;
+            margin-right: 10px;
+            background: url('../../../../../../../public/chevron-down-solid.svg')
+              no-repeat right 15px center;
+            background-size: 17px 17px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .productDetailTopSection {
+    .productDetailTopWrapper {
+      // 왼쪽 정보
+      .productTopInfoWrapper {
+        // 왼쪽 정보 -상단
+        .productInfoHeader {
+          // brand & category
+          .brandAndCategory {
+            margin: 15px 0 3px 0;
+          }
+
+          // description
+          .description {
+            margin-top: 30px;
+            height: auto;
+            align-items: end;
+          }
+        }
+
+        // 왼쪽 정보 -하단
+        .productInfoBottom {
+          padding: 20px 5px;
+          li {
+            margin-bottom: 20px;
+            span {
+              display: block;
+              margin-right: 0;
+            }
+            &:nth-last-child(1) {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        // Button
+        .addToCartButton {
+          padding-top: 30px;
+          select {
+            height: 40px;
+            width: 90px;
+            margin-right: 5px;
+            background: url('../../../../../../../public/chevron-down-solid.svg')
+              no-repeat right 8px center;
+            background-size: 12px 12px;
+          }
+        }
+      }
+    }
+  }
+}
